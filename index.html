@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IONM Team Publications</title>
+<meta name="description" content="Neuromonitoring papers and abstracts from the SpecialtyCare Greater Boston IONM team, with summaries and links to the full text.">
+<meta name="theme-color" content="#0b6a6e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IONM Papers">
+<meta property="og:title" content="IONM Team Publications">
+<meta property="og:description" content="Neuromonitoring papers from the SpecialtyCare Greater Boston IONM team.">
+<style>
+:root {
+  /* One column, phone first: save actions on top, papers grouped by collaborator below. */
+  --paper: #f3f5f5; --card: #ffffff; --ink: #14202a; --muted: #586570; --line: #d7dde1;
+  --accent: #0b6a6e; --accent-ink: #ffffff; --soft: #e4eff0;
+  --mgb: #2a5ca6; --specialtycare: #7448a8; --other: #6f7983; --free: #1d7449;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1519; --card: #172027; --ink: #e6ebee; --muted: #9eabb4; --line: #2b3741;
+    --accent: #5bbab6; --accent-ink: #06191a; --soft: #16302f;
+    --mgb: #88afe8; --specialtycare: #b99ae6; --other: #a3acb4; --free: #6bc89a;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); -webkit-text-size-adjust: 100%; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left)); display: flex; flex-direction: column; gap: 20px; }
+header .eyebrow { font-size: 13px; letter-spacing: .04em; color: var(--muted); margin: 0 0 4px; }
+header h1 { font-family: var(--serif); font-size: 30px; line-height: 1.15; margin: 0; text-wrap: balance; }
+header p.lede { margin: 8px 0 0; color: var(--muted); }
+.trace { display: block; width: 140px; height: 28px; margin-top: 12px; color: var(--accent); }
+
+.save { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.save h2 { font-size: 15px; margin: 0; color: var(--muted); font-weight: 600; }
+.btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 50px; border-radius: 11px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 600 16px/1.2 var(--sans); text-decoration: none; cursor: pointer; padding: 10px 14px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn small { font-weight: 400; opacity: .85; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.save .fine { font-size: 13.5px; color: var(--muted); margin: 0; }
+.hint { background: var(--soft); border-radius: 10px; padding: 10px 12px; font-size: 14.5px; display: none; gap: 10px; align-items: flex-start; }
+.hint.on { display: flex; }
+.hint button { margin-left: auto; background: none; border: 0; color: var(--muted); font-size: 20px; line-height: 1; cursor: pointer; padding: 0 2px; }
+.fallback { display: none; flex-direction: column; gap: 8px; font-size: 14.5px; }
+.fallback.on { display: flex; }
+.fallback input { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: 14px var(--sans); }
+
+nav.jumps { display: flex; flex-wrap: wrap; gap: 8px; }
+.jump { text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 8px; padding: 6px 10px; font-size: 14px; }
+.jump span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.mgb { --c: var(--mgb); } .specialtycare { --c: var(--specialtycare); } .other { --c: var(--other); }
+
+section.cat { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 12px; }
+.cat-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--c); padding-bottom: 4px; margin-top: 8px; }
+.cat-head h2 { font-family: var(--serif); font-size: 21px; margin: 0; text-wrap: balance; }
+.cat-head .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.cat-desc { margin: -4px 0 0; color: var(--muted); font-size: 14.5px; }
+.paper { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 12px; padding: 14px 15px; display: flex; flex-direction: column; gap: 7px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; }
+.yr { font-weight: 700; font-variant-numeric: tabular-nums; }
+.pill { background: var(--paper); color: var(--muted); border-radius: 5px; padding: 1px 7px; }
+.pill.free { color: var(--free); }
+.paper h3 { font-family: var(--serif); font-size: 18px; line-height: 1.3; margin: 0; text-wrap: balance; }
+.paper h3 a { color: var(--ink); text-decoration: none; }
+.paper h3 a:hover { text-decoration: underline; }
+.au { margin: 0; font-size: 14px; color: var(--muted); }
+.au b { color: var(--ink); }
+.ci { margin: 0; font-size: 13.5px; color: var(--muted); }
+.take { margin: 0; font-size: 15px; }
+.take .k { display: block; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+details { font-size: 15px; }
+details summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 14px; }
+details p { margin: 6px 0 0; }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; font-size: 14.5px; padding-top: 2px; }
+.links a { font-weight: 600; text-decoration: none; }
+.mini { margin-left: auto; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 5px 12px; font: 600 14px var(--sans); cursor: pointer; }
+
+footer { border-top: 1px solid var(--line); padding-top: 14px; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; }
+footer a { color: var(--muted); }
+
+.toast { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 9px 14px; border-radius: 9px; font-size: 14.5px; z-index: 30; }
+.booth { position: fixed; inset: 0; background: #ffffff; color: #14202a; z-index: 40; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; text-align: center; }
+.booth.on { display: flex; }
+.booth h2 { font-family: var(--serif); font-size: clamp(26px, 6vw, 54px); margin: 0; }
+.booth .qr { width: min(70vmin, 520px); aspect-ratio: 1; }
+.booth .qr svg { width: 100%; height: 100%; display: block; }
+.booth .url { font-size: clamp(16px, 3vw, 26px); font-weight: 600; word-break: break-all; }
+.booth .close { font-size: 14px; color: #586570; }
+@media (min-width: 560px) { header h1 { font-size: 36px; } }
+@media (prefers-reduced-motion: no-preference) { .btn, .mini { transition: filter .12s; } .btn:active, .mini:active { filter: brightness(.92); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">SpecialtyCare · Greater Boston neuromonitoring team</p>
+    <h1>IONM Team Publications</h1>
+    <p class="lede">15 papers and abstracts on intraoperative neuromonitoring, with plain-language summaries and links to the full text. 7 are free to read.</p>
+    <svg class="trace" viewBox="0 0 140 28" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" points="0,16 40,16 45,15 50,17 54,14 58,3 62,26 66,9 70,21 74,12 78,18 84,15 92,16 140,16"/></svg>
+  </header>
+
+  <section class="save" aria-labelledby="saveH">
+    <h2 id="saveH">Keep these papers</h2>
+    <button type="button" class="btn primary" id="send"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Send to myself <small>text, email, AirDrop</small></button>
+    <div class="row">
+      <a class="btn" href="IONM-Team-Publications.pdf" download>Download PDF</a>
+      <a class="btn" href="IONM-Team-Publications.ris" download>Citations (.ris)</a>
+    </div>
+    <p class="fine">The .ris file imports every paper into Zotero, EndNote or Mendeley.</p>
+    <div class="fallback" id="fallback" role="region" aria-label="Send options">
+      <a class="btn" id="mailLink" href="#">Email it to me</a>
+      <label for="linkBox">Or copy this link</label>
+      <input id="linkBox" readonly>
+    </div>
+    <div class="hint" id="iosHint"><span>To keep it on your phone, tap <b>Share</b> in Safari (inside the <b>•••</b> menu on newer iPhones), then <b>Add to Home Screen</b>.</span><button type="button" aria-label="Dismiss" data-dismiss="iosHint">×</button></div>
+    <button type="button" class="btn" id="install" hidden>Add to home screen</button>
+  </section>
+
+  <nav class="jumps" aria-label="Sections"><a class="jump mgb" href="#mgb">With Mass General Brigham Neurosurgery <span>12</span></a><a class="jump specialtycare" href="#specialtycare">SpecialtyCare research <span>2</span></a><a class="jump other" href="#other">Other collaborations <span>1</span></a></nav>
+
+  <section class="cat mgb" id="mgb" aria-labelledby="h-mgb"><div class="cat-head"><h2 id="h-mgb">With Mass General Brigham Neurosurgery</h2><span class="n">12</span></div><p class="cat-desc">Cases, techniques and reviews co-authored with neurosurgeons at Brigham and Women&#x27;s Hospital and Mass General Brigham.</p><article class="paper"><div class="meta"><span class="yr">2026</span><span class="pill">Case report</span><span class="pill free">Free full text</span></div><h3><a href="https://doi.org/10.3171/case26229" target="_blank" rel="noopener">Delayed identification and treatment of a cervicomedullary spinal vascular lesion following angiogram-negative, high-grade subarachnoid hemorrhage: illustrative case</a></h3><p class="au">Chang C, Motoc M, Can A, <b>Lachs M</b>, <b>Bose M</b>, Bernstock JD, Patel NJ</p><p class="ci"><i>J Neurosurg Case Lessons</i>. 2026;11(26):CASE26229.</p><p class="take"><span class="k">Monitoring takeaway</span> An MEP decline caught a correctable clip-related problem before closure.</p><details><summary>Summary</summary><p>A 54-year-old man with high-grade subarachnoid hemorrhage and an initially negative angiogram was later found to have an aneurysm and AVM beside the anterior spinal artery at the cervicomedullary junction. Endovascular treatment was judged too risky, so the lesion was resected through a far-lateral transcondylar approach. A decline in MEPs prompted the team to reinspect and correct an inadvertent clip-related injury, and the lesion was obliterated without new deficits. The authors recommend repeat imaging when initial studies are negative but cervicomedullary clues are present.</p></details><div class="links"><a href="https://doi.org/10.3171/case26229" target="_blank" rel="noopener">Free full text</a><a href="https://pubmed.ncbi.nlm.nih.gov/42372299/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Delayed identification and treatment of a cervicomedullary spinal vascular lesion following angiogram-negative, high-grade subarachnoid hemorrhage: illustrative case" data-url="https://doi.org/10.3171/case26229">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2026</span><span class="pill">Systematic review</span><span class="pill free">Free full text</span></div><h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13148752/" target="_blank" rel="noopener">Corticobulbar Motor Evoked Potentials: A Systematic Review of Technical Variations</a></h3><p class="au">Jarvis CA, <b>Toczylowski M</b>, <b>Bose M</b>, Patel RV, Wang J, McMahon JT, Bi WL</p><p class="ci"><i>Neurosurg Pract</i>. 2026;7(3):e000237.</p><p class="take"><span class="k">Monitoring takeaway</span> A catalog of the coMEP montages, paradigms and warning criteria in use; useful when writing or defending a standard protocol.</p><details><summary>Summary</summary><p>A PRISMA 2020 systematic review of 72 corticobulbar MEP studies published between 2005 and 2023. Its main finding is how unsettled the technique still is: electrode montages, stimulation set-ups and the way accuracy is measured differ widely from study to study, and only a minority report sensitivity or specificity at all. Most studies used coMEPs alongside other modalities, yet few compared them directly. The authors argue that common reporting standards are what would let coMEPs spread into routine practice.</p></details><div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13148752/" target="_blank" rel="noopener">Free full text</a><a href="https://doi.org/10.1227/neuprac.0000000000000237" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/42100545/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Corticobulbar Motor Evoked Potentials: A Systematic Review of Technical Variations" data-url="https://pmc.ncbi.nlm.nih.gov/articles/PMC13148752/">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2026</span><span class="pill">Meeting abstract</span></div><h3><a href="https://doi.org/10.1055/s-0046-1818935" target="_blank" rel="noopener">Intraoperative Trigeminal Somatosensory Evoked Potential Monitoring during Skull Base Surgery</a></h3><p class="au">McMahon JT, <b>Toczylowski M</b>, Jarvis CA, <b>Bose M</b>, Bi WL</p><p class="ci"><i>J Neurol Surg B Skull Base</i>. 2026;87(Suppl 1).</p><p class="take"><span class="k">Monitoring takeaway</span> Trigeminal SSEPs are obtainable in almost every branch, even with baseline numbness; an unrecovered drop may predict lasting facial deficit.</p><details><summary>Summary</summary><p>Retrospective review of trigeminal SSEP monitoring in 67 skull base craniotomies (2022 to 2025). Reliable V1 to V3 responses were obtained from 96% of 159 branches, including nearly every branch in patients who already had facial numbness. Six patients had intraoperative amplitude drops of roughly 30 to 60%, half of which recovered by closure; of the 61 without changes, one developed new numbness that persisted. Responses present at the end of surgery strongly predicted no lasting deficit, and the authors call for branch-specific alert thresholds.</p></details><div class="links"><a href="https://doi.org/10.1055/s-0046-1818935" target="_blank" rel="noopener">Publisher</a><button type="button" class="mini share1" data-title="Intraoperative Trigeminal Somatosensory Evoked Potential Monitoring during Skull Base Surgery" data-url="https://doi.org/10.1055/s-0046-1818935">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Letter</span></div><h3><a href="https://doi.org/10.1227/ons.0000000000001566" target="_blank" rel="noopener">In Reply: Interpretation and Strategy to Resolve Neuromonitoring Changes Associated With Brain Sag</a></h3><p class="au">Bi WL, <b>Toczylowski M</b>, Guo X, <b>Bose M</b></p><p class="ci"><i>Oper Neurosurg</i>. 2025;28(6):911.</p><p class="take"><span class="k">Monitoring takeaway</span> Irrigation-responsive loss points to sag artifact; loss that persists after irrigation is treated as a true change.</p><details><summary>Summary</summary><p>The authors&#x27; response to a letter from Sampath and colleagues about their brain-sag paper. They restate the working rule from that study: signal losses caused by sag recovered reliably with saline irrigation, so a change that persists despite irrigation is treated as real. They describe their multimodal set-up (MEPs, cortical and subcortical mapping, intraoperative ultrasound), concede that sag is judged by eye and its frequency is hard to measure retrospectively, and credit refinements in electrode placement to close surgeon and neurophysiologist collaboration.</p></details><div class="links"><a href="https://doi.org/10.1227/ons.0000000000001566" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/40168524/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="In Reply: Interpretation and Strategy to Resolve Neuromonitoring Changes Associated With Brain Sag" data-url="https://doi.org/10.1227/ons.0000000000001566">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Operative video</span><span class="pill free">Free full text</span></div><h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12607916/" target="_blank" rel="noopener">Interhemispheric Transcallosal Approach for Resection of a Pineal Region Third Ventricular to Brainstem Tumor: 2-Dimensional Operative Video</a></h3><p class="au">Guo X, <b>Bose M</b>, <b>Toczylowski M</b>, Fonseca A, Bi WL</p><p class="ci"><i>Oper Neurosurg</i>. 2025;29(6):907-908.</p><p class="take"><span class="k">Monitoring takeaway</span> Subcortical CST and brainstem-nucleus mapping combined with iMRI in a deep midline approach.</p><details><summary>Summary</summary><p>Operative video of a 19-year-old man with a pineal-region tumor reaching from the third ventricle toward the brainstem, removed through an anterior interhemispheric transcallosal, transchoroidal corridor. Subcortical mapping of the corticospinal tracts and brainstem nuclei, together with intraoperative MRI, guided the resection, and residual nodules were taken in a planned second stage to reach gross total resection. Pathology showed a mature teratoma. He improved steadily afterward and was walking on his own by eight months, with no new visual or endocrine deficits.</p></details><div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12607916/" target="_blank" rel="noopener">Free full text</a><a href="https://doi.org/10.1227/ons.0000000000001517" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/39982058/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Interhemispheric Transcallosal Approach for Resection of a Pineal Region Third Ventricular to Brainstem Tumor: 2-Dimensional Operative Video" data-url="https://pmc.ncbi.nlm.nih.gov/articles/PMC12607916/">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Meeting abstract</span></div><h3><a href="https://doi.org/10.1055/s-0045-1803714" target="_blank" rel="noopener">Corticobulbar Motor Evoked Potentials for Facial and Lower Cranial Nerves: A Systematic Review of Applications and Limitations</a></h3><p class="au">Jarvis CA, Patel R, McMahon JT, <b>Toczylowski M</b>, <b>Bose M</b>, Bi WL</p><p class="ci"><i>J Neurol Surg B Skull Base</i>. 2025;86(Suppl 1).</p><p class="take"><span class="k">Monitoring takeaway</span> Facial nerve dominates the coMEP literature; reported accuracy is wide-ranging and methods unstandardized.</p><details><summary>Summary</summary><p>Skull base meeting abstract that preceded the 2026 Neurosurgery Practice review. It covers 72 studies and 2,711 cases (2005 to 2023), 93% of them retrospective case reports or series with a median of 26 patients. The facial nerve was the usual target (41 studies), followed by the vagus (10) and hypoglossal (4), and about half the operations were in the cerebellopontine angle. Techniques varied widely, and reported sensitivity ranged from 40 to 100% and specificity from 60 to 100%.</p></details><div class="links"><a href="https://doi.org/10.1055/s-0045-1803714" target="_blank" rel="noopener">Publisher</a><button type="button" class="mini share1" data-title="Corticobulbar Motor Evoked Potentials for Facial and Lower Cranial Nerves: A Systematic Review of Applications and Limitations" data-url="https://doi.org/10.1055/s-0045-1803714">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Operative video</span><span class="pill free">Free full text</span></div><h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11748957/" target="_blank" rel="noopener">Brain mapping during resection of high-grade brain arteriovenous malformation</a></h3><p class="au">Kappel AD, <b>Bose M</b>, <b>Toczylowski M</b>, Patel NJ</p><p class="ci"><i>Neurosurg Focus Video</i>. 2025;12(1):V7.</p><p class="take"><span class="k">Monitoring takeaway</span> Dynamic suction-stimulator mapping carried over from tumor work into AVM resection, with a ~3 mm CST margin.</p><details><summary>Summary</summary><p>Technique video on removing high-grade AVMs that sit in eloquent territory, here involving somatosensory cortex and the visual and corticospinal pathways. Through a bilateral craniotomy, the team stimulated cortex and subcortical white matter with a suction stimulator so the motor tracts could be followed continuously as the nidus came out, keeping roughly 3 mm from the corticospinal tract. The authors present real-time stimulation mapping as a way to make these vascular resections safer.</p></details><div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11748957/" target="_blank" rel="noopener">Free full text</a><a href="https://doi.org/10.3171/2024.10.focvid24107" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/39845307/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Brain mapping during resection of high-grade brain arteriovenous malformation" data-url="https://pmc.ncbi.nlm.nih.gov/articles/PMC11748957/">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Operative video</span><span class="pill free">Free full text</span></div><h3><a href="https://doi.org/10.3171/2024.10.focvid24110" target="_blank" rel="noopener">Motor mapping-guided resection of a brainstem recurrent pilocytic astrocytoma</a></h3><p class="au">Guo X, <b>Bose M</b>, Galvin C, Bi WL</p><p class="ci"><i>Neurosurg Focus Video</i>. 2025;12(1):V2.</p><p class="take"><span class="k">Monitoring takeaway</span> Monopolar suction-stimulator mapping with a &lt;1 mA stop threshold and simultaneous limb and facial responses.</p><details><summary>Summary</summary><p>Video of a recurrent brainstem pilocytic astrocytoma removed under dynamic subcortical motor mapping with a monopolar stimulating suction device. Corticospinal responses were recorded continuously at midbrain and pontine levels, with contralateral limb and ipsilateral facial muscles captured together while tumor was removed. Resection stopped when the stimulation threshold fell below 1 mA, taken as about 1 mm or less from the tract.</p></details><div class="links"><a href="https://doi.org/10.3171/2024.10.focvid24110" target="_blank" rel="noopener">Free full text</a><a href="https://pubmed.ncbi.nlm.nih.gov/39845304/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Motor mapping-guided resection of a brainstem recurrent pilocytic astrocytoma" data-url="https://doi.org/10.3171/2024.10.focvid24110">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Operative video</span><span class="pill free">Free full text</span></div><h3><a href="https://doi.org/10.1227/ons.0000000000001471" target="_blank" rel="noopener">Multimodal-Assisted Resection of Right Insular Glioblastoma: A 2-Dimensional Operative Video</a></h3><p class="au">Guo X, Torio E, <b>Bose M</b>, Golby AJ, Bi WL</p><p class="ci"><i>Oper Neurosurg</i>. 2025;29(3):451.</p><details><summary>Summary</summary><p>Operative video demonstrating resection of a right insular glioblastoma with a multimodal set of intraoperative adjuncts. The full video article is free to view at the publisher.</p></details><div class="links"><a href="https://doi.org/10.1227/ons.0000000000001471" target="_blank" rel="noopener">Free full text</a><a href="https://pubmed.ncbi.nlm.nih.gov/39625292/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Multimodal-Assisted Resection of Right Insular Glioblastoma: A 2-Dimensional Operative Video" data-url="https://doi.org/10.1227/ons.0000000000001471">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2025</span><span class="pill">Original research</span><span class="pill free">Free full text</span></div><h3><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12068778/" target="_blank" rel="noopener">Interpretation and Strategy to Resolve Neuromonitoring Changes Associated With Brain Sag</a></h3><p class="au"><b>Bose M</b>, <b>Toczylowski M</b>, Guo X, Liu DD, Epplin-Zapf T, Wilent WB, Bi WL</p><p class="ci"><i>Oper Neurosurg</i>. 2025;28(6):841-854.</p><p class="take"><span class="k">Monitoring takeaway</span> Pattern recognition for sag-related false-positive SSEP/MEP loss in cranial cases, with a stepwise response algorithm.</p><details><summary>Summary</summary><p>A case-based analysis from one senior surgeon&#x27;s cranial tumor practice showing how brain sag, the brain shifting and settling during surgery, can produce false-positive losses of somatosensory and motor signals. The authors describe a recognizable pattern of stepwise signal decline and show that recovery during saline infusion indicates artifact rather than injury. They set out an interpretation and response strategy so the team can avoid changing the operation for a change that is not real.</p></details><div class="links"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12068778/" target="_blank" rel="noopener">Free full text</a><a href="https://doi.org/10.1227/ons.0000000000001430" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/40372119/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Interpretation and Strategy to Resolve Neuromonitoring Changes Associated With Brain Sag" data-url="https://pmc.ncbi.nlm.nih.gov/articles/PMC12068778/">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2022</span><span class="pill">Operative video</span></div><h3><a href="https://doi.org/10.1227/ons.0000000000000433" target="_blank" rel="noopener">Inferior is Superior: Transtentorial Transcollateral Sulcus Approach to the Ventricular Atrium: 2-Dimensional Operative Video</a></h3><p class="au">Emerson SN, Kadri PADS, <b>Toczylowski M</b>, Al-Mefty O</p><p class="ci"><i>Oper Neurosurg</i>. 2022;23(6):e369-e370.</p><details><summary>Summary</summary><p>Operative video of a supracerebellar transtentorial route through the collateral sulcus to reach the ventricular atrium. The patient was a 39-year-old woman with a hemorrhagic left atrial tumor causing speech and visual symptoms; fMRI placed language in the superior temporal gyrus next to the lesion, so the inferior route was chosen to spare it. The collateral sulcus is presented as a consistent, shallow landmark that gives a short path to the atrium, with navigation used to plan the trajectory. Sacrificing a bridging vein to the tentorial sinus caused ipsilateral cerebellar edema that responded to hypertonic saline, and her vision did not worsen.</p></details><div class="links"><a href="https://doi.org/10.1227/ons.0000000000000433" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/36227201/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Inferior is Superior: Transtentorial Transcollateral Sulcus Approach to the Ventricular Atrium: 2-Dimensional Operative Video" data-url="https://doi.org/10.1227/ons.0000000000000433">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2022</span><span class="pill">Operative video</span></div><h3><a href="https://doi.org/10.1227/ons.0000000000000211" target="_blank" rel="noopener">Dejerine Syndrome Variant Due to Medullary Perforating Artery Ischemia During Foramen Magnum Meningioma Resection: 2-Dimensional Operative Video</a></h3><p class="au">Emerson SN, <b>Toczylowski M</b>, Al-Mefty O</p><p class="ci"><i>Oper Neurosurg</i>. 2022;23(1):e52-e53.</p><p class="take"><span class="k">Monitoring takeaway</span> A clean dissociation: MEPs lost, SSEPs preserved, matching an isolated pyramidal injury on MRI.</p><details><summary>Summary</summary><p>Operative video of a ventral foramen magnum meningioma resection complicated by a partial Dejerine (medial medullary) syndrome from ischemia in small perforators of the distal vertebral and anterior spinal arteries. MEPs dropped abruptly while SSEPs stayed at baseline, and postoperative MRI showed injury confined to the pyramids. The patient woke quadriplegic, needed vertebral artery stenting, and after a long recovery regained full function. The teaching point is detailed knowledge of the medullary perforators when working at the foramen magnum.</p></details><div class="links"><a href="https://doi.org/10.1227/ons.0000000000000211" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/35726936/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Dejerine Syndrome Variant Due to Medullary Perforating Artery Ischemia During Foramen Magnum Meningioma Resection: 2-Dimensional Operative Video" data-url="https://doi.org/10.1227/ons.0000000000000211">Share</button></div></article></section><section class="cat specialtycare" id="specialtycare" aria-labelledby="h-specialtycare"><div class="cat-head"><h2 id="h-specialtycare">SpecialtyCare research</h2><span class="n">2</span></div><p class="cat-desc">Studies from SpecialtyCare&#x27;s clinical research group.</p><article class="paper"><div class="meta"><span class="yr">2020</span><span class="pill">Original research</span></div><h3><a href="https://doi.org/10.1097/bsd.0000000000000969" target="_blank" rel="noopener">Therapeutic Impact of Traction Release After C5 Nerve Root Motor Evoked Potential (MEP) Alerts in Cervical Spine Surgery</a></h3><p class="au">Wilent WB, Rhee JM, Harrop JS, Epplin-Zapf T, <b>Bose M</b>, Tesdahl EA, Cohen J, Sestokas AK</p><p class="ci"><i>Clin Spine Surg</i>. 2020;33(10):E442-E447.</p><p class="take"><span class="k">Monitoring takeaway</span> Traction release as the first response to a C5 MEP alert; alert sensitivity varies with anesthetic regimen.</p><details><summary>Summary</summary><p>A SpecialtyCare database study of 40,919 MEP-monitored cervical spine operations asking whether the surgeon&#x27;s response to a C5 MEP alert changes the rate of C5 palsy. The odds of palsy rose sharply when C5 alerts occurred and persisted, and releasing traction was associated with a lower palsy risk. How sensitive the alerts were depended on the anesthetic regimen. The authors conclude that prompt traction release is an effective response, with other maneuvers chosen by context.</p></details><div class="links"><a href="https://doi.org/10.1097/bsd.0000000000000969" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/32205523/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="Therapeutic Impact of Traction Release After C5 Nerve Root Motor Evoked Potential (MEP) Alerts in Cervical Spine Surgery" data-url="https://doi.org/10.1097/bsd.0000000000000969">Share</button></div></article><article class="paper"><div class="meta"><span class="yr">2019</span><span class="pill">Meeting abstract</span></div><h3><a href="https://doi.org/10.1016/j.spinee.2019.05.283" target="_blank" rel="noopener">Neuroanatomical categorization of motor evoked potential alerts during cervical spine surgery and associated risk for new neurologic deficit: retrospective analysis of 40,919 procedures (Abstract 268)</a></h3><p class="au">Wilent WB, Epplin-Zapf TJ, Tesdahl EA, <b>Bose M</b>, Cohen J, Sestokas AK</p><p class="ci"><i>Spine J</i>. 2019;19(9 Suppl):S130-S131.</p><details><summary>Summary</summary><p>Meeting abstract from SpecialtyCare&#x27;s clinical research group that classifies MEP alerts across 40,919 cervical spine procedures by neuroanatomical pattern and relates each category to the risk of a new neurologic deficit.</p></details><div class="links"><a href="https://doi.org/10.1016/j.spinee.2019.05.283" target="_blank" rel="noopener">Publisher</a><button type="button" class="mini share1" data-title="Neuroanatomical categorization of motor evoked potential alerts during cervical spine surgery and associated risk for new neurologic deficit: retrospective analysis of 40,919 procedures (Abstract 268)" data-url="https://doi.org/10.1016/j.spinee.2019.05.283">Share</button></div></article></section><section class="cat other" id="other" aria-labelledby="h-other"><div class="cat-head"><h2 id="h-other">Other collaborations</h2><span class="n">1</span></div><p class="cat-desc">Work with other partner hospitals, including Boston Children&#x27;s.</p><article class="paper"><div class="meta"><span class="yr">2026</span><span class="pill">Original research</span></div><h3><a href="https://doi.org/10.1097/wnp.0000000000001153" target="_blank" rel="noopener">The Role of Intraoperative Neurophysiologic Monitoring on Surgical Decision Making and Neurologic Outcomes in Pediatric Patients With Intramedullary Spinal Cord Tumors</a></h3><p class="au">Papadakis JE, Mosher AM, Slingerland AL, Albanese JS, Staffa SJ, <b>Bose M</b>, <b>Toczylowski M</b>, Fehnel K</p><p class="ci"><i>J Clin Neurophysiol</i>. 2026;43(1):49-60.</p><p class="take"><span class="k">Monitoring takeaway</span> MEP alerts frequently changed the operative plan by ending the resection.</p><details><summary>Summary</summary><p>Retrospective review of 59 pediatric intramedullary spinal cord tumor resections at Boston Children&#x27;s (2000 to 2022) looking at how monitoring shaped surgical decisions and outcomes. Motor evoked potential alerts often led surgeons to stop resecting. New motor and sensory deficits went with worse early outcomes, but most children had recovered function by one year. Monitoring was associated with longer stays and more discharges to rehab, without a difference in long-term outcome.</p></details><div class="links"><a href="https://doi.org/10.1097/wnp.0000000000001153" target="_blank" rel="noopener">Publisher</a><a href="https://pubmed.ncbi.nlm.nih.gov/40001277/" target="_blank" rel="noopener">PubMed</a><button type="button" class="mini share1" data-title="The Role of Intraoperative Neurophysiologic Monitoring on Surgical Decision Making and Neurologic Outcomes in Pediatric Patients With Intramedullary Spinal Cord Tumors" data-url="https://doi.org/10.1097/wnp.0000000000001153">Share</button></div></article></section>
+
+  <footer>
+    <span>Updated October 2026. Questions? Come talk to us.</span>
+    <a href="#booth">Show QR code</a>
+  </footer>
+</div>
+
+<div class="booth" id="booth" role="dialog" aria-modal="true" aria-label="QR code for this page">
+  <h2>Scan for all our papers</h2>
+  <div class="qr" id="qr"></div>
+  <div class="url" id="boothUrl"></div>
+  <a class="close" href="#">Tap here to close</a>
+</div>
+<div id="toastRoot" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+  var PDF = "IONM-Team-Publications.pdf";
+  var SHARE_TEXT = "Neuromonitoring papers from the SpecialtyCare Greater Boston IONM team";
+  function siteUrl() { return location.origin + location.pathname.replace(/index\.html$/, ""); }
+  function toast(t) {
+    var r = document.getElementById("toastRoot");
+    r.innerHTML = '<div class="toast">' + t + "</div>";
+    clearTimeout(toast.h); toast.h = setTimeout(function () { r.innerHTML = ""; }, 2200);
+  }
+
+  // Fetch the PDF ahead of time so the share sheet can attach it on the first tap.
+  var pdfFile = null;
+  try {
+    fetch(PDF).then(function (r) { return r.ok ? r.blob() : null; }).then(function (b) {
+      if (b && typeof File === "function") pdfFile = new File([b], PDF, { type: "application/pdf" });
+    }).catch(function () {});
+  } catch (e) {}
+
+  function showFallback() {
+    var url = siteUrl();
+    var fb = document.getElementById("fallback");
+    document.getElementById("linkBox").value = url;
+    document.getElementById("mailLink").href = "mailto:?subject=" + encodeURIComponent("IONM Team Publications") +
+      "&body=" + encodeURIComponent(SHARE_TEXT + ":\n" + url + "\n\nPDF: " + url + PDF);
+    fb.classList.add("on");
+    document.getElementById("linkBox").select();
+  }
+
+  document.getElementById("send").addEventListener("click", function () {
+    var url = siteUrl();
+    var data = { title: "IONM Team Publications", text: SHARE_TEXT, url: url };
+    if (pdfFile && navigator.canShare) {
+      var withFile = { title: data.title, text: SHARE_TEXT + ": " + url, files: [pdfFile] };
+      try { if (navigator.canShare(withFile)) data = withFile; } catch (e) {}
+    }
+    if (navigator.share) {
+      navigator.share(data).catch(function (err) { if (!err || err.name !== "AbortError") showFallback(); });
+    } else {
+      showFallback();
+    }
+  });
+
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".share1");
+    if (!b) return;
+    var d = { title: b.getAttribute("data-title"), url: b.getAttribute("data-url") };
+    if (navigator.share) {
+      navigator.share(d).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(d.url).then(function () { toast("Link copied"); }, function () { toast(d.url); });
+    } else {
+      toast(d.url);
+    }
+  });
+
+  document.querySelectorAll("[data-dismiss]").forEach(function (b) {
+    b.addEventListener("click", function () { document.getElementById(b.getAttribute("data-dismiss")).classList.remove("on"); });
+  });
+
+  // Home-screen install: Android shows a real button; iPhone gets instructions.
+  var standalone = (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || navigator.standalone;
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIOS && !standalone) document.getElementById("iosHint").classList.add("on");
+  var deferred = null, installBtn = document.getElementById("install");
+  window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); deferred = e; installBtn.hidden = false; });
+  installBtn.addEventListener("click", function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () { deferred = null; installBtn.hidden = true; }, function () {});
+  });
+  window.addEventListener("appinstalled", function () { installBtn.hidden = true; });
+
+  // Booth view: a large QR code for this page, for a tablet or laptop at the table.
+  var qrLoaded = false;
+  function drawQr() {
+    var url = siteUrl();
+    document.getElementById("boothUrl").textContent = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    if (typeof qrcode !== "function") return;
+    var q = qrcode(0, "M"); q.addData(url); q.make();
+    document.getElementById("qr").innerHTML = q.createSvgTag({ cellSize: 8, margin: 32, scalable: true, title: "QR code for " + url });
+  }
+  function route() {
+    var on = location.hash === "#booth";
+    document.getElementById("booth").classList.toggle("on", on);
+    if (!on) return;
+    if (qrLoaded) { drawQr(); return; }
+    var s = document.createElement("script"); s.src = "qr.js";
+    s.onload = function () { qrLoaded = true; drawQr(); };
+    document.head.appendChild(s);
+  }
+  window.addEventListener("hashchange", route);
+  route();
+
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>
